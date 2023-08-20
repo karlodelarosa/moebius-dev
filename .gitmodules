@@ -1,0 +1,6 @@
+[submodule "volumes/moebius/moebius"]
+	path = volumes/moebius/moebius
+	url = https://github.com/karlodelarosa/moebius
+[submodule "volumes/moebius-api/moebius-api"]
+	path = volumes/moebius-api/moebius-api
+	url = https://github.com/karlodelarosa/moebius-api

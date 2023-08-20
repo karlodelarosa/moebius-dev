@@ -1,0 +1,34 @@
+version: '3.1'
+services:
+  database:
+    container_name: moebius-db
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    env_file: ./env_files/moebius-db/.env
+    ports:
+      - "3310:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+  moebius-api:
+    container_name: moebius-api
+    build: ./builds/moebius-api/
+    env_file: ./env_files/moebius-api/.env
+    ports:
+      - "8080:8080" #host:container
+    links:
+      - database
+    volumes:
+      - ./volumes/moebius-api/:/moebius-api
+  moebius:
+    container_name: moebius
+    build: ./builds/moebius/
+    env_file: ./env_files/moebius/.env
+    ports:
+      - "5173:5173" #host:container
+    links:
+      - moebius-api
+    volumes:
+      - ./volumes/moebius/:/moebius
+
+volumes:
+  mysql-data:

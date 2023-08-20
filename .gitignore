@@ -1,0 +1,7 @@
+# IDE
+.idea/*
+
+# Environment variable files
+env_files/moebius/.env
+env_files/moebius-api/.env
+env_files/moebius-db/.env
